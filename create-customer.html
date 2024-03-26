@@ -93,13 +93,13 @@
 
       <div class="individualx">
         <h2 class="individual-header">Individual Registration</h2>
-        <form>
+        <form action="../Fashion-Design/BackEnd/src/controllers/clients/registerClients.php" method="post">
           <label for="fullName">Full Name</label>
           <input
             class="input-select"
             type="text"
             id="fullName"
-            name="fullName"
+            name="fullname"
             required
           />
 
@@ -108,9 +108,7 @@
             class="input-select"
             type="tel"
             id="phoneNumber"
-            name="phoneNumber"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            placeholder="Format: 123-456-7890"
+            name="phonenumber"
             required
           />
 
@@ -141,7 +139,7 @@
             class="input-select"
             type="text"
             id="familyName"
-            name="familyName"
+            name="familyname"
             required
           />
 
@@ -204,7 +202,7 @@
         fullNameLabel.textContent = "Full Name";
         var fullNameInput = document.createElement("input");
         fullNameInput.type = "text";
-        fullNameInput.name = "fullName[]";
+        fullNameInput.name = "fullname[]";
         fullNameInput.classList.add("input-select");
         fullNameInput.required = true;
 
@@ -213,8 +211,8 @@
         phoneNumberLabel.textContent = "Phone Number";
         var phoneNumberInput = document.createElement("input");
         phoneNumberInput.type = "tel";
-        phoneNumberInput.name = "phoneNumber[]";
-        phoneNumberInput.pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
+        phoneNumberInput.name = "phonenumber[]";
+        // phoneNumberInput.pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
         phoneNumberInput.placeholder = "Format: 123-456-7890";
         phoneNumberInput.classList.add("input-select");
         phoneNumberInput.required = true;
