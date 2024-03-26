@@ -347,7 +347,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-#individualButton, #familyButton {
+#individualButton, #familyButton, #create, #view {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -432,4 +432,59 @@ h1 {
     width: 100%;
     left: 0;
   }
+}
+
+.measurement-div {
+  padding: 30px;
+}
+
+.measure-header {
+  color: darkslategrey;
+  margin-bottom: 10px;
+}
+
+.select-measure {
+  width: 50%;
+  padding: 5px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  .measure-header {
+    font-size: 15px;
+  }
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.spinner-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.measurement-div, .app {
+  min-height: 100vh;
+}
+
+.appointment-div {
+  padding: 30px;
+}
+
+.appointment-form {
+  margin-left: 20px;
 }

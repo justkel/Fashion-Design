@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="style.css" />
-    <title>View More Images</title>
+    <title>Appointments</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -18,8 +16,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
     />
+    <link rel="stylesheet" href="create.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
     <div class="sidebar">
         <div class="logo-details">
           <i class="ri-scissors-line"></i>
@@ -38,9 +39,9 @@
                 <i class="bx bx-collection"></i>
                 <span class="link_name">Customers</span>
               </a>
-            
+      
             </div>
-        
+          
           </li>
           <li>
             <a href="measurements.html">
@@ -80,60 +81,57 @@
             </div>
           </li>
         </ul>
-      </div>
+    </div>
 
-      <div class="home-section section">
+    <section class="home-section app">
         <div class="home-content">
-            <i class="bx bx-menu"></i>
+          <i class="bx bx-menu"></i>
+        </div>
+  
+        <div class="container-above appointment-div above">
+          <button id="create">Create Appointment</button>
+          <button id="view">View Appointments</button>
         </div>
 
-        <div class="image-grid" id="images-container"></div>
-      </div>  
+        <div class="create-appointment">
+            <form class="appointment-form" action="">
+                <label for="user">Select User:</label>
+                <select class="select-measure" id="user" name="user" onchange="loadUserMeasurements()">
+                    <option value="">Select User</option>
+                    <option value="1">Anj</option>
+                    <option value="2">Emmanuel</option>
+                    <option value="3">Zainab</option>
 
-      
+                    
+                </select>
+                <input class="select-measure" type="datetime-local" name="datetime" id="">
 
-</body>
+                <button type="submit" class="submit-btn" id="submit-btn" class="hidden">Submit</button>
+            </form>
+            
+        </div>
 
-
-
-<script>
+        <div class="view-appointments" style="display: none">
+            <!-- Fetch all the individual accounts with appointments set -->
+            <!-- i.e, Name - Date/Time -->
+        </div>
     
-      let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".bx-menu");
-      console.log(sidebarBtn);
-      sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-      });
+    </section>    
+    
+</body>
+<script>
+    document
+        .getElementById("create")
+        .addEventListener("click", function () {
+          document.querySelector(".create-appointment").style.display = "block";
+          document.querySelector(".view-appointments").style.display = "none";
+        });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const collection = urlParams.get('collection');
-
-    const images = {
-        'Collection 1': ['kid7.avif', 'kid2.avif', 'kid4.avif', 'kid5.avif', 'kid1.avif'],
-        'Collection 2': ['kurta1.avif', 'kurta2.avif', 'kurta3.avif', 'kurta4.avif'],
-        'Collection 3': ['sari1.avif', 'sari2.avif', 'sari3.avif', 'sari4.avif'],
-        'Collection 4': ['set1.avif', 'set2.avif', 'set3.avif', 'set4.avif', 'set5.avif'],
-        'Collection 5': ['shirtx.avif', 'shirt2.avif', 'shirt4.avif', 'shirt1.avif'],
-        'Collection 6': ['themed1.avif', 'themed2.avif', 'themed3.avif', 'themed4.avif']
-    };
-
-    const filteredImages = images[collection];
-
-    const imagesContainer = document.getElementById('images-container');
-    filteredImages.forEach(image => {
-        const img = document.createElement('img');
-        img.src = `images/${image}`;
-        img.alt = collection;
-        
-        const name = document.createElement('p');
-        name.textContent = image.slice(0, -5); // Remove file extension from image name
-        
-        const item = document.createElement('div');
-        item.classList.add('image-item');
-        item.appendChild(img);
-        item.appendChild(name);
-        imagesContainer.appendChild(item);
-    });
+      document
+        .getElementById("view")
+        .addEventListener("click", function () {
+          document.querySelector(".create-appointment").style.display = "none";
+          document.querySelector(".view-appointments").style.display = "block";
+        });
 </script>
-
 </html>

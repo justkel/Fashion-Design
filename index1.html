@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -26,26 +25,22 @@
       </li>
       <li>
         <div class="iocn-link">
-          <a href="#">
+          <a href="index1.html">
             <i class='bx bx-collection' ></i>
             <span class="link_name">Customers</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+     
         </div>
-        <ul class="sub-menu">
-          <!-- <li><a class="link_name" href="#">Categoryz</a></li> -->
-          <li><a href="#">Individual</a></li>
-          <li><a href="#">Family</a></li>
-        </ul>
+    
       </li>
       <li>
-        <a href="#">
+        <a href="measurements.html">
           <i class='bx bx-pie-chart-alt-2' ></i>
           <span class="link_name">Measurements</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="appointments.html">
           <i class='bx bx-line-chart' ></i>
           <span class="link_name">Appointment</span>
         </a>
@@ -237,13 +232,7 @@
     
   </section>
   <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
+
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".bx-menu");
   console.log(sidebarBtn);

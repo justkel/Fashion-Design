@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Customer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="create.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="ri-scissors-line"></i>
+        <span class="logo_name">TAYLUR</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="dashboard.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a href="#">
+              <i class="bx bx-collection"></i>
+              <span class="link_name">Customers</span>
+            </a>
+            <i class="bx bxs-chevron-down arrow"></i>
+          </div>
+          <ul class="sub-menu">
+            <!-- <li><a class="link_name" href="#">Categoryz</a></li> -->
+            <li><a href="#">Individual</a></li>
+            <li><a href="#">Family</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="link_name">Measurements</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="bx bx-line-chart"></i>
+            <span class="link_name">Appointment</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-history"></i>
+            <span class="link_name">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="link_name">Settings</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Settings</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="profile-details">
+            <div class="profile-content"></div>
+            <div class="name-job">
+              <div class="profile_name">Boluwatife</div>
+              <div class="job">Fashion Designer</div>
+            </div>
+            <i class="bx bx-log-out"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="home-content">
+        <i class="bx bx-menu"></i>
+      </div>
+
+      <div class="container-above above">
+        <button id="individualButton">Individual</button>
+        <button id="familyButton">Family</button>
+      </div>
+
+      <div class="individualx">
+        <h2 class="individual-header">Individual Registration</h2>
+        <form>
+          <label for="fullName">Full Name</label>
+          <input
+            class="input-select"
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+          />
+
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            class="input-select"
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="Format: 123-456-7890"
+            required
+          />
+
+          <label for="gender">Gender</label>
+          <select
+            class="input-select"
+            id="gender"
+            name="gender"
+            onchange="showMeasurements()"
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          <div class="measurements">
+            <label class="measurement-span">Measurements (Optional - Skip if not available)</label>
+            <div id="male-measurements" class="hidden male-div">
+              <div class="form-group">
+                <label class="shoulder-first" for="shoulder">Shoulder (SH)</label>
+                <input
+                  type="text"
+                  id="shoulder"
+                  name="shoulder"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="short-sleeve">Short Sleeve (SS)</label>
+                <input
+                  type="text"
+                  id="short-sleeve"
+                  name="short-sleeve"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="long-sleeve">Long Sleeve (LS)</label>
+                <input
+                  type="text"
+                  id="long-sleeve"
+                  name="long-sleeve"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="elbow-circumference"
+                  >Elbow Circum. (EC)</label
+                >
+                <input
+                  type="text"
+                  id="elbow-circumference"
+                  name="elbow-circumference"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="round-sleeve">Round Sleeve (RS)</label>
+                <input
+                  type="text"
+                  id="round-sleeve"
+                  name="round-sleeve"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="shirt-length">Shirt Length (SL)</label>
+                <input
+                  type="text"
+                  id="shirt-length"
+                  name="shirt-length"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="neck">Neck (NK)</label>
+                <input
+                  type="text"
+                  id="neck"
+                  name="neck"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="back">Back (BK)</label>
+                <input
+                  type="text"
+                  id="back"
+                  name="back"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="waist">Waist (WA)</label>
+                <input
+                  type="text"
+                  id="waist"
+                  name="waist"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="trouser-length">Trouser Length (TL)</label>
+                <input
+                  type="text"
+                  id="trouser-length"
+                  name="trouser-length"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="ankle">Ankle (AN)</label>
+                <input
+                  type="text"
+                  id="ankle"
+                  name="ankle"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="thigh">Thigh (TH)</label>
+                <input
+                  type="text"
+                  id="thigh"
+                  name="thigh"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="knee-length">Knee Length (KL)</label>
+                <input
+                  type="text"
+                  id="knee-length"
+                  name="knee-length"
+                  class="measurement-input"
+                />
+              </div>
+            </div>
+
+            <div id="female-measurements" class="hidden female-div">
+              <div class="form-group">
+                <label class="head-first" for="head">Head (HD)</label>
+                <input
+                  type="text"
+                  id="head"
+                  name="head"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="shoulder">Shoulder (SH)</label>
+                <input
+                  type="text"
+                  id="shoulder"
+                  name="shoulder"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="chest">Chest (CH)</label>
+                <input
+                  type="text"
+                  id="chest"
+                  name="chest"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="waist">Waist (WA)</label>
+                <input
+                  type="text"
+                  id="waist"
+                  name="waist"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="arm">Arm (AR)</label>
+                <input
+                  type="text"
+                  id="arm"
+                  name="arm"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="wrist">Wrist (WS)</label>
+                <input
+                  type="text"
+                  id="wrist"
+                  name="wrist"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="high-hip">High Hip (HH)</label>
+                <input
+                  type="text"
+                  id="high-hip"
+                  name="high-hip"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="hip">Hip (HP)</label>
+                <input
+                  type="text"
+                  id="hip"
+                  name="hip"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="waist-to-knee">Waist to Knee (WK)</label>
+                <input
+                  type="text"
+                  id="waist-to-knee"
+                  name="waist-to-knee"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="waist-to-ankle">Waist to Ankle (WA)</label>
+                <input
+                  type="text"
+                  id="waist-to-ankle"
+                  name="waist-to-ankle"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="knee">Knee (KN)</label>
+                <input
+                  type="text"
+                  id="knee"
+                  name="knee"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="ankle">Ankle (AN)</label>
+                <input
+                  type="text"
+                  id="ankle"
+                  name="ankle"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="neck">Neck (NK)</label>
+                <input
+                  type="text"
+                  id="neck"
+                  name="neck"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="bust">Bust (BS)</label>
+                <input
+                  type="text"
+                  id="bust"
+                  name="bust"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="underbust">Underbust (UB)</label>
+                <input
+                  type="text"
+                  id="underbust"
+                  name="underbust"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="sleeve-length">Sleeve Length (SL)</label>
+                <input
+                  type="text"
+                  id="sleeve-length"
+                  name="sleeve-length"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="upper-arm">Upper Arm (UA)</label>
+                <input
+                  type="text"
+                  id="upper-arm"
+                  name="upper-arm"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="forearm">Forearm (FA)</label>
+                <input
+                  type="text"
+                  id="forearm"
+                  name="forearm"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="thigh">Thigh (TH)</label>
+                <input
+                  type="text"
+                  id="thigh"
+                  name="thigh"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="calf">Calf (CF)</label>
+                <input
+                  type="text"
+                  id="calf"
+                  name="calf"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="back-width">Back Width (BW)</label>
+                <input
+                  type="text"
+                  id="back-width"
+                  name="back-width"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="back-length">Back Length (BL)</label>
+                <input
+                  type="text"
+                  id="back-length"
+                  name="back-length"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="front-waist-length">Front Waist Length (FWL)</label>
+                <input
+                  type="text"
+                  id="front-waist-length"
+                  name="front-waist-length"
+                  class="measurement-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="total-rise">Total Rise (TR)</label>
+                <input
+                  type="text"
+                  id="total-rise"
+                  name="total-rise"
+                  class="measurement-input"
+                />
+              </div>
+            </div>
+          </div>
+
+          <label for="address">Address</label>
+          <textarea id="address" name="address" rows="4" required></textarea>
+
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="familyx" style="display: none">
+        <h2 class="family-header">Family Account Registration</h2>
+        <form id="familyForm">
+          <label for="familyName">Family Name</label>
+          <input
+            class="input-select"
+            type="text"
+            id="familyName"
+            name="familyName"
+            required
+          />
+
+          <div id="familyMembers">
+            <label>Family Members</label><br />
+            <select name="individual-customers" class="input-select" id="">
+              <option value="">Select Existing Customer</option>
+            </select>
+            <div id="memberFields"></div>
+            <button type="button" onclick="addFamilyMember()">
+              Add Family Member</button
+            ><br />
+          </div>
+          <br />
+
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+    <script>
+      let arrow = document.querySelectorAll(".arrow");
+      for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+          let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
+          arrowParent.classList.toggle("showMenu");
+        });
+      }
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".bx-menu");
+      console.log(sidebarBtn);
+      sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+
+      document
+        .getElementById("individualButton")
+        .addEventListener("click", function () {
+          document.querySelector(".individualx").style.display = "block";
+          document.querySelector(".familyx").style.display = "none";
+        });
+
+      document
+        .getElementById("familyButton")
+        .addEventListener("click", function () {
+          document.querySelector(".individualx").style.display = "none";
+          document.querySelector(".familyx").style.display = "block";
+        });
+
+
+      function addFamilyMember() {
+        var memberFields = document.getElementById("memberFields");
+
+        // Create a container div for each family member
+        var memberContainer = document.createElement("div");
+        memberContainer.classList.add("member-container");
+
+        // Create input field for full name
+        var fullNameLabel = document.createElement("label");
+        fullNameLabel.textContent = "Full Name";
+        var fullNameInput = document.createElement("input");
+        fullNameInput.type = "text";
+        fullNameInput.name = "fullName[]";
+        fullNameInput.classList.add("input-select");
+        fullNameInput.required = true;
+
+        // Create input field for phone number
+        var phoneNumberLabel = document.createElement("label");
+        phoneNumberLabel.textContent = "Phone Number";
+        var phoneNumberInput = document.createElement("input");
+        phoneNumberInput.type = "tel";
+        phoneNumberInput.name = "phoneNumber[]";
+        phoneNumberInput.pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
+        phoneNumberInput.placeholder = "Format: 123-456-7890";
+        phoneNumberInput.classList.add("input-select");
+        phoneNumberInput.required = true;
+
+        // Create select field for gender
+        var genderLabel = document.createElement("label");
+        genderLabel.textContent = "Gender";
+        var genderSelect = document.createElement("select");
+        genderSelect.name = "gender[]";
+        genderSelect.classList.add("input-select");
+        genderSelect.required = true;
+        var genderOptions = ["Select Gender", "Male", "Female"];
+        genderOptions.forEach(function (optionText) {
+          var option = document.createElement("option");
+          option.value = optionText.toLowerCase();
+          option.textContent = optionText;
+          genderSelect.appendChild(option);
+        });
+
+        // Create textarea for address
+        var addressLabel = document.createElement("label");
+        addressLabel.textContent = "Address";
+        var addressTextarea = document.createElement("textarea");
+        addressTextarea.name = "address[]";
+        addressTextarea.rows = "4";
+        addressTextarea.classList.add("input-select");
+        addressTextarea.required = true;
+
+        // Create remove button for the family member
+        var removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.textContent = "Remove";
+        removeButton.classList.add("remove-btn");
+        removeButton.onclick = function () {
+          memberFields.removeChild(memberContainer);
+        };
+
+        var dashedLine = document.createElement("div");
+        dashedLine.classList.add("dash-line");
+        dashedLine.textContent = "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _";
+
+
+        // Append all elements to the member container
+        memberContainer.appendChild(fullNameLabel);
+        memberContainer.appendChild(fullNameInput);
+        memberContainer.appendChild(phoneNumberLabel);
+        memberContainer.appendChild(phoneNumberInput);
+        memberContainer.appendChild(genderLabel);
+        memberContainer.appendChild(genderSelect);
+        memberContainer.appendChild(addressLabel);
+        memberContainer.appendChild(addressTextarea);
+        memberContainer.appendChild(removeButton);
+        memberContainer.appendChild(dashedLine);
+
+        var measurementHeader = document.createElement("label");
+        measurementHeader.classList.add("measurement-span");
+        measurementHeader.textContent = "Measurements (Optional - Skip if not available)";
+
+        var maleMeasurementsDiv = document.getElementById('male-measurements').cloneNode(true);
+        maleMeasurementsDiv.classList.remove('hidden');
+        var femaleMeasurementsDiv = document.getElementById('female-measurements').cloneNode(true);
+        femaleMeasurementsDiv.classList.remove('hidden');
+
+        // Append the selected measurement div based on the gender selection
+        genderSelect.addEventListener('change', function() {
+          // Remove existing measurement divs
+          Array.from(memberContainer.children).forEach(function(child) {
+            if (child.classList.contains('male-div') || child.classList.contains('female-div')) {
+                memberContainer.removeChild(child);
+            }
+        });
+
+          if (genderSelect.value === 'female') {
+            memberContainer.appendChild(measurementHeader);
+            memberContainer.appendChild(femaleMeasurementsDiv);
+            femaleMeasurementsDiv.classList.add("female-add");
+          } else {
+            memberContainer.appendChild(measurementHeader);
+            memberContainer.appendChild(maleMeasurementsDiv);
+            maleMeasurementsDiv.classList.add("male-add");
+          }
+
+          // Remove the remove button from its current position
+          memberContainer.removeChild(removeButton);
+
+          // Append the remove button to the bottom of the container
+          memberContainer.appendChild(removeButton);
+
+          memberContainer.removeChild(dashedLine);
+
+          memberContainer.appendChild(dashedLine);
+
+          
+        });
+
+
+        // Append the member container to the member fields
+        memberFields.appendChild(memberContainer);
+      }
+
+      function removeFamilyMember(button) {
+        var memberContainer = button.parentNode;
+        memberContainer.parentNode.removeChild(memberContainer);
+      }
+
+      function showMeasurements() {
+        var gender = document.getElementById("gender").value;
+        var maleDiv = document.getElementById("male-measurements");
+        var femaleDiv = document.getElementById("female-measurements");
+
+        if (gender === "male") {
+          maleDiv.style.display = "flex";  // or "flex", "grid", etc. depending on your layout
+          femaleDiv.style.display = "none";
+          maleDiv.classList.add("male-add");
+        } else {
+            femaleDiv.style.display = "flex";  // or "flex", "grid", etc. depending on your layout
+            maleDiv.style.display = "none";
+            femaleDiv.classList.add("female-add");
+        } 
+      }
+    </script>
+  </body>
+</html>

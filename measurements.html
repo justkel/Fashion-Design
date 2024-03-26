@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurements Page</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="create.css">
+<link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class="ri-scissors-line"></i>
+          <span class="logo_name">TAYLUR</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="dashboard.html">
+              <i class="bx bx-grid-alt"></i>
+              <span class="link_name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <div class="iocn-link">
+              <a href="index1.html">
+                <i class="bx bx-collection"></i>
+                <span class="link_name">Customers</span>
+              </a>
+           
+            </div>
+          </li>
+          <li>
+            <a href="measurements.html">
+              <i class="bx bx-pie-chart-alt-2"></i>
+              <span class="link_name">Measurements</span>
+            </a>
+          </li>
+          <li>
+            <a href="appointments.html">
+              <i class="bx bx-line-chart"></i>
+              <span class="link_name">Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-history"></i>
+              <span class="link_name">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-cog"></i>
+              <span class="link_name">Settings</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Settings</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="profile-details">
+              <div class="profile-content"></div>
+              <div class="name-job">
+                <div class="profile_name">Boluwatife</div>
+                <div class="job">Fashion Designer</div>
+              </div>
+              <i class="bx bx-log-out"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <div class="home-section section">
+        
+        <div class="home-content">
+            <i class="bx bx-menu"></i>
+        </div>
+
+        <div class="measurement-div">
+           <h2 class="measure-header">Measurements Page</h2>
+           <form id="measurements-form" action="submit_measurements.php" method="post">
+            <label for="user">Select User:</label>
+            <select class="select-measure" id="user" name="user" onchange="loadUserMeasurements()">
+                <option value="">Select User</option>
+                <option value="1">Anj</option>
+                <option value="2">Emmanuel</option>
+                <option value="3">Zainab</option>
+
+                <!-- PHP code to fetch users -->
+                <!-- <?php
+                // Replace this with your PHP code to fetch users from the database
+                $users = [
+                    ['id' => 1, 'name' => 'User 1', 'gender' => 'male'],
+                    ['id' => 2, 'name' => 'User 2', 'gender' => 'female']
+                ];
+                foreach ($users as $user) {
+                    echo "<option value=\"{$user['id']}\" data-gender=\"{$user['gender']}\">{$user['name']}</option>";
+                }
+                ?> -->
+                
+            </select>
+    
+            <div class="measurements">
+                <label class="measurement-span">Measurements</label>
+                <div id="male-measurements" class="hidden male-div">
+                  <div class="form-group">
+                    <label class="shoulder-first" for="shoulder">Shoulder (SH)</label>
+                    <input
+                      type="text"
+                      id="shoulder"
+                      name="shoulder"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="short-sleeve">Short Sleeve (SS)</label>
+                    <input
+                      type="text"
+                      id="short-sleeve"
+                      name="short-sleeve"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="long-sleeve">Long Sleeve (LS)</label>
+                    <input
+                      type="text"
+                      id="long-sleeve"
+                      name="long-sleeve"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="elbow-circumference"
+                      >Elbow Circum. (EC)</label
+                    >
+                    <input
+                      type="text"
+                      id="elbow-circumference"
+                      name="elbow-circumference"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="round-sleeve">Round Sleeve (RS)</label>
+                    <input
+                      type="text"
+                      id="round-sleeve"
+                      name="round-sleeve"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="shirt-length">Shirt Length (SL)</label>
+                    <input
+                      type="text"
+                      id="shirt-length"
+                      name="shirt-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="neck">Neck (NK)</label>
+                    <input
+                      type="text"
+                      id="neck"
+                      name="neck"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="back">Back (BK)</label>
+                    <input
+                      type="text"
+                      id="back"
+                      name="back"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="waist">Waist (WA)</label>
+                    <input
+                      type="text"
+                      id="waist"
+                      name="waist"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="trouser-length">Trouser Length (TL)</label>
+                    <input
+                      type="text"
+                      id="trouser-length"
+                      name="trouser-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ankle">Ankle (AN)</label>
+                    <input
+                      type="text"
+                      id="ankle"
+                      name="ankle"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="thigh">Thigh (TH)</label>
+                    <input
+                      type="text"
+                      id="thigh"
+                      name="thigh"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="knee-length">Knee Length (KL)</label>
+                    <input
+                      type="text"
+                      id="knee-length"
+                      name="knee-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                </div>
+    
+                <div id="female-measurements" class="hidden female-div">
+                  <div class="form-group">
+                    <label class="head-first" for="head">Head (HD)</label>
+                    <input
+                      type="text"
+                      id="head"
+                      name="head"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="shoulder">Shoulder (SH)</label>
+                    <input
+                      type="text"
+                      id="shoulder"
+                      name="shoulder"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="chest">Chest (CH)</label>
+                    <input
+                      type="text"
+                      id="chest"
+                      name="chest"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="waist">Waist (WA)</label>
+                    <input
+                      type="text"
+                      id="waist"
+                      name="waist"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="arm">Arm (AR)</label>
+                    <input
+                      type="text"
+                      id="arm"
+                      name="arm"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="wrist">Wrist (WS)</label>
+                    <input
+                      type="text"
+                      id="wrist"
+                      name="wrist"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="high-hip">High Hip (HH)</label>
+                    <input
+                      type="text"
+                      id="high-hip"
+                      name="high-hip"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="hip">Hip (HP)</label>
+                    <input
+                      type="text"
+                      id="hip"
+                      name="hip"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="waist-to-knee">Waist to Knee (WK)</label>
+                    <input
+                      type="text"
+                      id="waist-to-knee"
+                      name="waist-to-knee"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="waist-to-ankle">Waist to Ankle (WA)</label>
+                    <input
+                      type="text"
+                      id="waist-to-ankle"
+                      name="waist-to-ankle"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="knee">Knee (KN)</label>
+                    <input
+                      type="text"
+                      id="knee"
+                      name="knee"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ankle">Ankle (AN)</label>
+                    <input
+                      type="text"
+                      id="ankle"
+                      name="ankle"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="neck">Neck (NK)</label>
+                    <input
+                      type="text"
+                      id="neck"
+                      name="neck"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="bust">Bust (BS)</label>
+                    <input
+                      type="text"
+                      id="bust"
+                      name="bust"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="underbust">Underbust (UB)</label>
+                    <input
+                      type="text"
+                      id="underbust"
+                      name="underbust"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="sleeve-length">Sleeve Length (SL)</label>
+                    <input
+                      type="text"
+                      id="sleeve-length"
+                      name="sleeve-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="upper-arm">Upper Arm (UA)</label>
+                    <input
+                      type="text"
+                      id="upper-arm"
+                      name="upper-arm"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="forearm">Forearm (FA)</label>
+                    <input
+                      type="text"
+                      id="forearm"
+                      name="forearm"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="thigh">Thigh (TH)</label>
+                    <input
+                      type="text"
+                      id="thigh"
+                      name="thigh"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="calf">Calf (CF)</label>
+                    <input
+                      type="text"
+                      id="calf"
+                      name="calf"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="back-width">Back Width (BW)</label>
+                    <input
+                      type="text"
+                      id="back-width"
+                      name="back-width"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="back-length">Back Length (BL)</label>
+                    <input
+                      type="text"
+                      id="back-length"
+                      name="back-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="front-waist-length">Front Waist Length (FWL)</label>
+                    <input
+                      type="text"
+                      id="front-waist-length"
+                      name="front-waist-length"
+                      class="measurement-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="total-rise">Total Rise (TR)</label>
+                    <input
+                      type="text"
+                      id="total-rise"
+                      name="total-rise"
+                      class="measurement-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div id="spinner-container" class="hidden">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>  
+
+            <button type="submit" class="submit-btn" id="submit-btn" class="hidden">Submit</button>
+            
+        </form> 
+        </div>
+        
+
+    </div>    
+
+    
+
+<script src="scripts.js"></script>
+</body>
+</html>
