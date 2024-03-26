@@ -122,12 +122,6 @@ textarea {
   }
 }
 
-@media screen and (min-width: 601px) {
-  .measurements .form-group {
-    width: 48%; /* Half width on larger screens */
-  }
-}
-
 
 @media (max-width: 500px) {
   body{
@@ -203,6 +197,10 @@ textarea {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.measurement-span {
+  margin-bottom: 20px;
 }
 
 /* Hide select options */

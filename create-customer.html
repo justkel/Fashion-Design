@@ -27,7 +27,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#">
+          <a href="dashboard.html">
             <i class="bx bx-grid-alt"></i>
             <span class="link_name">Dashboard</span>
           </a>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="individualx">
-        <h2 class="individual-header">Individual Details</h2>
+        <h2 class="individual-header">Individual Registration</h2>
         <form>
           <label for="fullName">Full Name</label>
           <input
@@ -132,8 +132,8 @@
           </select>
 
           <div class="measurements">
+            <label class="measurement-span">Measurements (Optional - Skip if not available)</label>
             <div id="male-measurements" class="hidden male-div">
-              <span class="measurement-span">Measurements</span>
               <div class="form-group">
                 <label class="shoulder-first" for="shoulder">Shoulder (SH)</label>
                 <input
@@ -256,7 +256,6 @@
             </div>
 
             <div id="female-measurements" class="hidden female-div">
-              <label class="measurement-span">Measurements</label>
               <div class="form-group">
                 <label class="head-first" for="head">Head (HD)</label>
                 <input
@@ -497,6 +496,9 @@
 
           <div id="familyMembers">
             <label>Family Members</label><br />
+            <select name="individual-customers" class="input-select" id="">
+              <option value="">Select Existing Customer</option>
+            </select>
             <div id="memberFields"></div>
             <button type="button" onclick="addFamilyMember()">
               Add Family Member</button
@@ -537,26 +539,6 @@
           document.querySelector(".familyx").style.display = "block";
         });
 
-      // function addFamilyMember() {
-      //   var memberFields = document.getElementById('memberFields');
-      //   var input = document.createElement('input');
-      //   input.type = 'text';
-      //   input.id = "text-member"
-      //   input.name = 'familyMember[]';
-      //   input.placeholder = 'Enter family member\'s name';
-      //   input.required = true;
-      //   memberFields.appendChild(input);
-
-      //   var removeButton = document.createElement('button');
-      //   removeButton.type = 'button';
-      //   removeButton.textContent = 'Remove';
-      //   removeButton.id = 'remove-btn';
-      //   removeButton.onclick = function() {
-      //     memberFields.removeChild(input);
-      //     memberFields.removeChild(removeButton);
-      //   };
-      //   memberFields.appendChild(removeButton);
-      // }
 
       function addFamilyMember() {
         var memberFields = document.getElementById("memberFields");
@@ -592,7 +574,7 @@
         genderSelect.name = "gender[]";
         genderSelect.classList.add("input-select");
         genderSelect.required = true;
-        var genderOptions = ["Select Gender", "Male", "Female", "Other"];
+        var genderOptions = ["Select Gender", "Male", "Female"];
         genderOptions.forEach(function (optionText) {
           var option = document.createElement("option");
           option.value = optionText.toLowerCase();
@@ -635,6 +617,10 @@
         memberContainer.appendChild(removeButton);
         memberContainer.appendChild(dashedLine);
 
+        var measurementHeader = document.createElement("label");
+        measurementHeader.classList.add("measurement-span");
+        measurementHeader.textContent = "Measurements (Optional - Skip if not available)";
+
         var maleMeasurementsDiv = document.getElementById('male-measurements').cloneNode(true);
         maleMeasurementsDiv.classList.remove('hidden');
         var femaleMeasurementsDiv = document.getElementById('female-measurements').cloneNode(true);
@@ -643,16 +629,20 @@
         // Append the selected measurement div based on the gender selection
         genderSelect.addEventListener('change', function() {
           // Remove existing measurement divs
-          var existingMeasurementDivs = memberContainer.querySelectorAll('.male-div, .female-div');
-          existingMeasurementDivs.forEach(function(div) {
-            memberContainer.removeChild(div);
-          });
+          Array.from(memberContainer.children).forEach(function(child) {
+            if (child.classList.contains('male-div') || child.classList.contains('female-div')) {
+                memberContainer.removeChild(child);
+            }
+        });
 
-          if (genderSelect.value === 'male') {
+          if (genderSelect.value === 'female') {
+            memberContainer.appendChild(measurementHeader);
+            memberContainer.appendChild(femaleMeasurementsDiv);
+            femaleMeasurementsDiv.classList.add("female-add");
+          } else {
+            memberContainer.appendChild(measurementHeader);
             memberContainer.appendChild(maleMeasurementsDiv);
             maleMeasurementsDiv.classList.add("male-add");
-          } else if (genderSelect.value === 'female') {
-            memberContainer.appendChild(femaleMeasurementsDiv);
           }
 
           // Remove the remove button from its current position
@@ -673,13 +663,6 @@
         memberFields.appendChild(memberContainer);
       }
 
-      // function removeFamilyMember(button) {
-      //   var memberFields = document.getElementById('memberFields');
-      //   var input = button.previousSibling;
-      //   memberFields.removeChild(input);
-      //   memberFields.removeChild(button);
-      // }
-
       function removeFamilyMember(button) {
         var memberContainer = button.parentNode;
         memberContainer.parentNode.removeChild(memberContainer);
@@ -691,11 +674,13 @@
         var femaleDiv = document.getElementById("female-measurements");
 
         if (gender === "male") {
-          maleDiv.classList.remove("hidden");
-          femaleDiv.classList.add("hidden");
+          maleDiv.style.display = "flex";  // or "flex", "grid", etc. depending on your layout
+          femaleDiv.style.display = "none";
+          maleDiv.classList.add("male-add");
         } else {
-          maleDiv.classList.add("hidden");
-          femaleDiv.classList.remove("hidden");
+            femaleDiv.style.display = "flex";  // or "flex", "grid", etc. depending on your layout
+            maleDiv.style.display = "none";
+            femaleDiv.classList.add("female-add");
         } 
       }
     </script>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>View More Images</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class="ri-scissors-line"></i>
+          <span class="logo_name">TAYLUR</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="dashboard.html">
+              <i class="bx bx-grid-alt"></i>
+              <span class="link_name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bx-collection"></i>
+                <span class="link_name">Customers</span>
+              </a>
+              <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+              <!-- <li><a class="link_name" href="#">Categoryz</a></li> -->
+              <li><a href="#">Individual</a></li>
+              <li><a href="#">Family</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-pie-chart-alt-2"></i>
+              <span class="link_name">Measurements</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-line-chart"></i>
+              <span class="link_name">Appointment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-history"></i>
+              <span class="link_name">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-cog"></i>
+              <span class="link_name">Settings</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Settings</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="profile-details">
+              <div class="profile-content"></div>
+              <div class="name-job">
+                <div class="profile_name">Boluwatife</div>
+                <div class="job">Fashion Designer</div>
+              </div>
+              <i class="bx bx-log-out"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="home-section section">
+        <div class="home-content">
+            <i class="bx bx-menu"></i>
+        </div>
+
+        <div class="image-grid" id="images-container"></div>
+      </div>  
+
+      
+
+</body>
+
+
+
+<script>
+    let arrow = document.querySelectorAll(".arrow");
+      for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+          let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
+          arrowParent.classList.toggle("showMenu");
+        });
+      }
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".bx-menu");
+      console.log(sidebarBtn);
+      sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const collection = urlParams.get('collection');
+
+    const images = {
+        'Collection 1': ['kid7.avif', 'kid2.avif', 'kid4.avif', 'kid5.avif', 'kid1.avif'],
+        'Collection 2': ['kurta1.avif', 'kurta2.avif', 'kurta3.avif', 'kurta4.avif'],
+        'Collection 3': ['sari1.avif', 'sari2.avif', 'sari3.avif', 'sari4.avif'],
+        'Collection 4': ['set1.avif', 'set2.avif', 'set3.avif', 'set4.avif', 'set5.avif'],
+        'Collection 5': ['shirtx.avif', 'shirt2.avif', 'shirt4.avif', 'shirt1.avif'],
+        'Collection 6': ['themed1.avif', 'themed2.avif', 'themed3.avif', 'themed4.avif']
+    };
+
+    const filteredImages = images[collection];
+
+    const imagesContainer = document.getElementById('images-container');
+    filteredImages.forEach(image => {
+        const img = document.createElement('img');
+        img.src = `images/${image}`;
+        img.alt = collection;
+        
+        const name = document.createElement('p');
+        name.textContent = image.slice(0, -5); // Remove file extension from image name
+        
+        const item = document.createElement('div');
+        item.classList.add('image-item');
+        item.appendChild(img);
+        item.appendChild(name);
+        imagesContainer.appendChild(item);
+    });
+</script>
+
+</html>
