@@ -36,8 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Insert new client into the database
                 $sql = "INSERT INTO clients (fullname, phonenumber, gender, address) VALUES ('" . $client['fullname'] . "', '" . $client['phonenumber'] . "', '" . $client['gender'] . "', '" . $client['address'] . "')";
                 $result = mysqli_query($conn, $sql);
-                
-                $result = mysqli_query($conn, $sql);
         
                 if ($result) {
                     // Registration successful, redirect to login page or homepage
