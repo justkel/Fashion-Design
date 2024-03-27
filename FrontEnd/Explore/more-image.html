@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="explore.css">
+    <link rel="stylesheet" href="../style.css" />
     <title>View More Images</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -23,18 +23,37 @@
     <div class="sidebar">
         <div class="logo-details">
           <i class="ri-scissors-line"></i>
-          <span class="logo_name">TAYLUR</span>
+          <span class="logo_name"><a href="../Index/index.html" style="text-decoration: none; color: #fff;">TAYLUR</a></span>
         </div>
         <ul class="nav-links">
           <li>
-            <a href="dashboard.html">
+            <a href="../Explore/explore.html">
               <i class="bx bx-grid-alt"></i>
-              <span class="link_name">Dashboard</span>
+              <span class="link_name">Explore</span>
             </a>
           </li>
           <li>
             <div class="iocn-link">
-              <a href="index1.html">
+              <a href="../Events/events.html">
+                <i class="bx bx-collection"></i>
+                <span class="link_name">Events</span>
+              </a>
+            </div>
+        
+          </li>
+          <li>
+            <div class="iocn-link">
+              <a href="../Index/index.html">
+                <i class="bx bx-history"></i>
+                <span class="link_name">Register</span>
+              </a>
+            
+            </div>
+        
+          </li>
+          <!-- <li>
+            <div class="iocn-link">
+              <a href="../Customer/create-customer.html">
                 <i class="bx bx-collection"></i>
                 <span class="link_name">Customers</span>
               </a>
@@ -68,17 +87,7 @@
             <ul class="sub-menu blank">
               <li><a class="link_name" href="#">Settings</a></li>
             </ul>
-          </li>
-          <li>
-            <div class="profile-details">
-              <div class="profile-content"></div>
-              <div class="name-job">
-                <div class="profile_name">Boluwatife</div>
-                <div class="job">Fashion Designer</div>
-              </div>
-              <i class="bx bx-log-out"></i>
-            </div>
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -122,7 +131,7 @@
     const imagesContainer = document.getElementById('images-container');
     filteredImages.forEach(image => {
         const img = document.createElement('img');
-        img.src = `images/${image}`;
+        img.src = `../images/${image}`;
         img.alt = collection;
         
         const name = document.createElement('p');

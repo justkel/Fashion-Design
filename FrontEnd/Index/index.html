@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-    <link rel="stylesheet" href="create.css">
+    <link rel="stylesheet" href="../Customer/create.css">
     <link rel="stylesheet" href="nav.css">
     <title>Login & Registration</title>
 </head>
@@ -21,8 +21,8 @@
         <div class="nav-menu" id="navMenu">
             <ul>
                 <li><a href="#" class="link active">Home</a></li>
-                <li><a href="#" class="link">Services</a></li>
-                <li><a href="#" class="link">About</a></li>
+                <li><a href="../Explore/explore.html" class="link">Explore</a></li>
+                <li><a href="../Events/events.html" class="link">Events</a></li>
             </ul>
         </div>
         <div class="nav-button">
@@ -39,14 +39,14 @@
         
         <!------------------- login form -------------------------->
 
-        <form action="../Fashion-Design/BackEnd/src/controllers/login.controller.php" method="post">
+        <form action="../../BackEnd/src/controllers/login.controller.php" method="post">
             <div class="login-container" id="login">
                 <div class="top">
                     <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
                     <header>Login</header>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Username or Email" name="username">
+                    <input type="text" class="input-field" placeholder="Username" name="username">
                     <i class="bx bx-user"></i>
                 </div>
                 <div class="input-box">
@@ -69,7 +69,7 @@
         </form>
 
         <!------------------- registration form -------------------------->
-        <form action="../Fashion-Design/BackEnd/src/controllers/register.controller.php" method="post">
+        <form action="../../BackEnd/src/controllers/register.controller.php" method="post">
             <div class="register-container" id="register">
                 <div class="top">
                     <span>Have an account? <a href="#" onclick="login()">Login</a></span>
@@ -77,20 +77,16 @@
                 </div>
                 <div class="two-forms">
                     <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Firstname">
-                        <i class="bx bx-user"></i>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Lastname">
+                        <input type="text" class="input-field" placeholder="Username" name="username">
                         <i class="bx bx-user"></i>
                     </div>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Email">
+                    <input type="text" class="input-field" placeholder="Email" name="email">
                     <i class="bx bx-envelope"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password">
+                    <input type="password" class="input-field" placeholder="Password" name="password">
                     <i class="bx bx-lock-alt"></i>
                 </div>
                 <div class="input-box">

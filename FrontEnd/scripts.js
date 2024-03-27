@@ -3,7 +3,11 @@ function loadUserMeasurements() {
     const selectedUser = userSelect.options[userSelect.selectedIndex];
     const gender = selectedUser.getAttribute('data-gender');
     const selectedValue = selectedUser.value;
-    console.log(selectedValue);
+
+    document.getElementById('male-measurements').style.display = "none";
+  
+    document.getElementById('female-measurements').style.display = "none";
+
 
     // Show spinner
     document.getElementById('spinner-container').classList.remove('hidden');
@@ -20,36 +24,32 @@ function loadUserMeasurements() {
         userSelect.disabled = false;
         document.getElementById('submit-btn').disabled = false;
 
-        // Show male or female measurements form based on gender
+
         if (gender === 'male') {
-            document.getElementById('male-measurements').classList.remove('hidden');
-            document.getElementById('female-measurements').classList.add('hidden');
+            document.getElementById('male-measurements').style.display = 'flex';
             document.getElementById('male-measurements').classList.add('male-add');
         } else if (gender === 'female') {
-            document.getElementById('male-measurements').classList.add('hidden');
-            document.getElementById('female-measurements').classList.remove('hidden');
+            document.getElementById('female-measurements').style.display = 'flex';
             document.getElementById('female-measurements').classList.add('female-add');
         }
 
+        // Show the appropriate measurements div based on gender
         // if (selectedValue === '2') {
-        //     document.getElementById('male-measurements').classList.remove('hidden');
-        //     document.getElementById('female-measurements').classList.add('hidden');
+        //     document.getElementById('male-measurements').style.display = 'flex';
         //     document.getElementById('male-measurements').classList.add('male-add');
-        // } else {
-        //     document.getElementById('male-measurements').classList.add('hidden');
-        //     document.getElementById('female-measurements').classList.remove('hidden');
+        //   } else {
+        //     document.getElementById('female-measurements').style.display = 'flex';
         //     document.getElementById('female-measurements').classList.add('female-add');
-        // }
+        //   }
 
         // Show submit button
         document.getElementById('submit-btn').classList.remove('hidden');
     }, 5000);
 }
 
-
 let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".bx-menu");
-      console.log(sidebarBtn);
-      sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-      });
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+});

@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
     />
     <link rel="stylesheet" href="create.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <div class="sidebar">
@@ -27,14 +27,14 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="dashboard.html">
+          <a href="../Explore/explore.html">
             <i class="bx bx-grid-alt"></i>
-            <span class="link_name">Dashboard</span>
+            <span class="link_name">Explore</span>
           </a>
         </li>
         <li>
           <div class="iocn-link">
-            <a href="index1.html">
+            <a href="../Customer/create-customer.html">
               <i class="bx bx-collection"></i>
               <span class="link_name">Customers</span>
             </a>
@@ -43,13 +43,13 @@
         
         </li>
         <li>
-          <a href="measurements.html">
+          <a href="../Measurement/measurements.html">
             <i class="bx bx-pie-chart-alt-2"></i>
             <span class="link_name">Measurements</span>
           </a>
         </li>
         <li>
-          <a href="appointments.html">
+          <a href="../Appointment/appointments.html">
             <i class="bx bx-line-chart"></i>
             <span class="link_name">Appointment</span>
           </a>
@@ -93,7 +93,7 @@
 
       <div class="individualx">
         <h2 class="individual-header">Individual Registration</h2>
-        <form action="../Fashion-Design/BackEnd/src/controllers/clients/registerClients.php" method="post">
+        <form action="../../BackEnd/src/controllers/clients/registerClients.php" method="post">
           <label for="fullName">Full Name</label>
           <input
             class="input-select"
@@ -133,7 +133,7 @@
 
       <div class="familyx" style="display: none">
         <h2 class="family-header">Family Account Registration</h2>
-        <form id="familyForm">
+        <form id="familyForm" action="../../BackEnd/src/controllers/clients/registerFamily.php" method="post">
           <label for="familyName">Family Name</label>
           <input
             class="input-select"
@@ -148,6 +148,16 @@
             <select name="individual-customers" class="input-select" id="" multiple>
               <option value="">Select Existing Customer</option>
             </select>
+
+            <label for="phoneNumber">General Phone No</label>
+            <input
+              class="input-select"
+              type="tel"
+              id="familyPhoneNumber"
+              name="phonenumber"
+              required
+            />
+
             <div id="memberFields"></div>
             <button type="button" onclick="addFamilyMember()">
               Add Family Member</button
@@ -289,5 +299,5 @@
       }
 
     </script>
-  </body>
+  </body>
 </html>

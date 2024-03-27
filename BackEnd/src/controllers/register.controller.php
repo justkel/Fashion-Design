@@ -6,13 +6,14 @@ include '../config/db_config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $username = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Hash the password
-    if(empty($username) || empty($password) || empty($confirm_password)) {
+    if(empty($username) || empty($password)) {
         echo json_encode(array(
             'isSuccess' => false, 
             'message' => 'Enter complete details'));
@@ -38,25 +39,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'message' => 'User Already registered'));
                 // header("Location: ../../../FrontEnd/login.html?error=user_already_registered");
                 exit;
-            }else {
-                // Insert new user into the database
-                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
-                $result = mysqli_query($conn, $sql);
-        
-                if ($result) {
-                    // Registration successful, redirect to login page or homepage
-                    echo json_encode(array(
-                        'isSuccess' => true, 
-                        'message' => 'Individual registered'));
-                    // header("Location: ../../../FrontEnd/login.html?registration=success");
-                    exit;
-                } else {
-                    // Registration failed, redirect back to register page with error message
-                    echo json_encode(array(
-                        'isSuccess' => false, 
-                        'message' => 'Error registering client'));
-                    // header("Location: ../../../FrontEnd/register.html?error=error registering user");
-                }
+        }else {
+            // Insert new user into the database
+            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email, '$hashed_password')";
+            $result = mysqli_query($conn, $sql);
+    
+            if ($result) {
+                // Registration successful, redirect to login page or homepage
+                echo json_encode(array(
+                    'isSuccess' => true, 
+                    'message' => 'Individual registered'));
+                // header("Location: ../../../FrontEnd/login.html?registration=success");
+                exit;
+            } else {
+                // Registration failed, redirect back to register page with error message
+                echo json_encode(array(
+                    'isSuccess' => false, 
+                    'message' => 'Error registering client'));
+                // header("Location: ../../../FrontEnd/register.html?error=error registering user");
+            }
             }
         }
     }
