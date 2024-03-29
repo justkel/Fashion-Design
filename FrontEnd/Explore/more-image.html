@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="explore.css">
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../Index/nav.css">
     <title>View More Images</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -20,81 +21,30 @@
     />
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo-details">
-          <i class="ri-scissors-line"></i>
-          <span class="logo_name"><a href="../Index/index.html" style="text-decoration: none; color: #fff;">TAYLUR</a></span>
-        </div>
-        <ul class="nav-links">
-          <li>
-            <a href="../Explore/explore.html">
-              <i class="bx bx-grid-alt"></i>
-              <span class="link_name">Explore</span>
-            </a>
-          </li>
-          <li>
-            <div class="iocn-link">
-              <a href="../Events/events.html">
-                <i class="bx bx-collection"></i>
-                <span class="link_name">Events</span>
-              </a>
-            </div>
-        
-          </li>
-          <li>
-            <div class="iocn-link">
-              <a href="../Index/index.html">
-                <i class="bx bx-history"></i>
-                <span class="link_name">Register</span>
-              </a>
-            
-            </div>
-        
-          </li>
-          <!-- <li>
-            <div class="iocn-link">
-              <a href="../Customer/create-customer.html">
-                <i class="bx bx-collection"></i>
-                <span class="link_name">Customers</span>
-              </a>
-            
-            </div>
-        
-          </li>
-          <li>
-            <a href="measurements.html">
-              <i class="bx bx-pie-chart-alt-2"></i>
-              <span class="link_name">Measurements</span>
-            </a>
-          </li>
-          <li>
-            <a href="appointments.html">
-              <i class="bx bx-line-chart"></i>
-              <span class="link_name">Appointment</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bx bx-history"></i>
-              <span class="link_name">Projects</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bx bx-cog"></i>
-              <span class="link_name">Settings</span>
-            </a>
-            <ul class="sub-menu blank">
-              <li><a class="link_name" href="#">Settings</a></li>
-            </ul>
-          </li> -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <p class="logo_name" onclick="navigateToRoot()">
+        <i class="ri-scissors-line"></i> TAYLUR
+    </p>
+    </div>
+    <div class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="../Landing-Page/root.html#sectionx" class="link active">About</a></li>
+          <li><a href="../Landing-Page/root.html#section3" class="link">Services</a></li>
+          <li><a href="../Explore/explore.html" class="link">Explore</a></li>
         </ul>
-      </div>
+    </div>
+    <div class="nav-button">
+        <button class="btn white-btn" id="loginBtn" onclick="">Login</button>
+        <button class="btn" id="registerBtn" onclick="">Signup</button>
+    </div>
+    <div class="nav-menu-btn">
+        <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+    </div>
+</nav>
 
-      <div class="home-section section">
-        <div class="home-content">
-            <i class="bx bx-menu"></i>
-        </div>
+      <div class="home-section-explore">
+       
 
         <div class="image-grid" id="images-container"></div>
       </div>  
@@ -107,12 +57,7 @@
 
 <script>
     
-      let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".bx-menu");
-      console.log(sidebarBtn);
-      sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-      });
+     
 
     const urlParams = new URLSearchParams(window.location.search);
     const collection = urlParams.get('collection');
@@ -143,6 +88,10 @@
         item.appendChild(name);
         imagesContainer.appendChild(item);
     });
+
+    function navigateToRoot() {
+      window.location.href = "../Landing-Page/root.html";
+    }
 </script>
 
 </html>

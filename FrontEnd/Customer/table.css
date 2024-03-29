@@ -1,0 +1,46 @@
+/* Table style */
+.table {
+    width: 90%; /* Adjust width as needed */
+    margin: 20px auto; /* Add margin to center the table */
+    background-color: #f2e6ff; /* Light purple background */
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* Table header style */
+.table th {
+    background-color: #5E4B8B; /* Dark purple header */
+    text-align: center;
+    padding: 8px;
+    color: antiquewhite;
+
+}
+
+/* Table row style */
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* Alternating row color */
+.table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray alternating rows */
+}
+
+/* Hover effect */
+.table tr:hover {
+    background-color: #ddd; /* Dark gray hover effect */
+}
+
+.heading{
+    text-align: center;
+}
+
+.error-message {
+    color: #5E4B8B; /* Purple color */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Bold font */
+    text-align: center; /* Center alignment */
+    margin-top: 20px; /* Add margin to separate from other elements */
+}

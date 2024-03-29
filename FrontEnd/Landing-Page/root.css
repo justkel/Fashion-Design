@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: "Montserrat", sans-serif;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110vh;
+    background: rgba(39, 39, 39, 0.4);
+}
+.nav{
+    position: relative;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background: linear-gradient(rgba(39,39,39, 0.6), transparent);
+    z-index: 9999;
+}
+.nav-logo p{
+    color: #5E4B8B;
+    font-size: 25px;
+    font-weight: 600;
+}
+.nav-menu ul{
+    display: flex;
+}
+.nav-menu ul li{
+    list-style-type: none;
+}
+.nav-menu ul li .link{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 15px;
+    margin: 0 25px;
+}
+.link:hover, .active{
+    border-bottom: 2px solid #fff;
+}
+.nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background-color: #5E4B8B;
+    font-weight: 600;
+    color: antiquewhite;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+.btn:hover{
+    background: rgb(170, 104, 170);
+}
+#registerBtn{
+    margin-left: 15px;
+}
+.btn.white-btn{
+    color: #5E4B8B;
+    background-color: rgb(224, 223, 223);
+    border: 1px solid #5E4B8B;
+    font-weight: 600;
+}
+.btn.btn.white-btn:hover{
+    background: whitesmoke;
+}
+.nav-menu-btn{
+    display: none;
+}
+.form-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 512px;
+    height: 420px;
+    overflow: hidden;
+    z-index: 2;
+}
+.login-container{
+    position: absolute;
+    left: 4px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+.register-container{
+    position: absolute;
+    right: -520px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+.top span{
+    color: #fff;
+    font-size: 26px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.top span a{
+    font-weight: 500;
+    color: #5E4B8B;
+    margin-left: 5px;
+}
+header{
+    color: #fff;
+    font-size: small;
+    text-align: center;
+    padding: 10px 0 30px 0;
+}
+
+.header1 {
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0 30px 0;
+}
+
+.two-forms{
+    display: flex;
+    gap: 10px;
+}
+.input-field{
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: .2s ease;
+}
+.input-field:hover, .input-field:focus{
+    background: rgba(255, 255, 255, 0.25);
+}
+::-webkit-input-placeholder{
+    color: #fff;
+}
+.input-box i{
+    position: relative;
+    top: -35px;
+    left: 17px;
+    color: #fff;
+}
+.submit{
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: #5E4B8B;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.submit:hover{
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.two-col{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: small;
+    margin-top: 10px;
+}
+.two-col .one{
+    display: flex;
+    gap: 5px;
+}
+.two label a{
+    text-decoration: none;
+    color: #fff;
+}
+.two label a:hover{
+    text-decoration: underline;
+}
+@media only screen and (max-width: 786px){
+    .nav-button{
+        display: none;
+    }
+    .nav-menu.responsive{
+        top: 100px;
+    }
+    .nav-menu{
+        position: absolute;
+        top: -800px;
+        display: flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.2);
+        width: 100%;
+        height: 90vh;
+        backdrop-filter: blur(20px);
+        transition: .3s;
+    }
+    .nav-menu ul{
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-menu-btn{
+        display: block;
+    }
+    .nav-menu-btn i{
+        font-size: 25px;
+        color: #fff;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+    }
+    .nav-menu-btn i:hover{
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+@media only screen and (max-width: 540px) {
+    .wrapper{
+        min-height: 100vh;
+    }
+    .form-box{
+        width: 100%;
+        height: 500px;
+    }
+    .register-container, .login-container{
+        width: 100%;
+        padding: 0 20px;
+    }
+    .register-container .two-forms{
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+/* //////////////////////////////////////////// */
+
+
+/* Base styles */
+.section1 {
+    display: flex;
+    flex-wrap: wrap; /* Allows child elements to wrap as needed */
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px 60px 60px;
+    background-color:#FCFBF4;
+}
+
+.intro-div, .image-div {
+    flex: 1; /* Each takes up equal space */
+}
+
+.intro-div h2, .intro-div p {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.intro-div h2 {
+    font-size: 11px;
+    display: inline-block;
+    padding: 5px 8px;
+    /* margin: 5px; */
+    border: 2px solid rgb(179, 122, 179); /* Sets the border color to a purple shade */
+    color: #5E4B8B;
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px;
+}
+
+
+.intro-div p.first-p {
+    font-size: 47px;
+    font-weight: 600;
+    color: #5E4B8B;;
+}
+
+.intro-div p.second-p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #5E4B8B;
+    margin-bottom: 20px;
+}
+
+/* Spans styled as buttons */
+.intro-div .first-span {
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: 500;
+    background-color: #5E4B8B;
+    font-weight: 600;
+    color: antiquewhite;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.intro-div .second-span {
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-block;
+    color: #5E4B8B;
+    background-color: rgb(224, 223, 223);
+    border: 1px solid #5E4B8B;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.image-div img {
+    width: 100%; /* Makes the image fill the container */
+    height: auto; /* Keeps the image aspect ratio */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .section1 {
+        flex-direction: column-reverse; /* Stack vertically, image first */
+    }
+
+    .intro-div p {
+        text-align: center;
+    }
+
+    .intro-div h2 {
+        text-align: center;
+        display: block;
+    }
+
+    .intro-div h2 {
+        font-size: 15px; /* Smaller font size for smaller screens */
+    }
+
+    .intro-div p.first-p {
+        font-size: 38px;
+    }
+
+    .intro-div p.second-p {
+        font-size: 16px; /* Adjusted font size for paragraphs */
+    }
+
+    /* Optionally stack spans/buttons on top of each other on smaller screens */
+    .intro-div span {
+        display: block; /* Stack the spans/buttons */
+        margin: 10px auto; /* Center the buttons */
+    }
+}
+
+
+.section2 {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    justify-content: center; /* Centers items horizontally */
+    align-items: flex-start; /* Aligns items to the start of the flex container */
+    gap: 20px; /* Adds space between items */
+    text-align: center; /* Centers the text inside each div */
+    background-color: #5E4B8B;
+    padding: 50px 30px 50px 30px;
+}
+
+/* .section2 {
+    text-align: center;
+    padding-top: 30px;
+    background-color: #5E4B8B;
+} */
+
+.section2 span {
+    margin-bottom: 20px; /* Adds space below the span */
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    border-bottom: 3px solid white; /* Thick, solid, black line */
+    padding-bottom: 2px; /* Adjusts spacing between text and underline */
+}
+
+.section2 h3, .section2 p {
+    color: #fff;
+}
+
+.section2 h3 {
+    margin: 10px 0 10px 0;
+}
+
+.first-details, .second-details, .third-details, .fourth-details {
+    flex: 1; /* Each div will take equal width */
+    max-width: 200px; /* Maximum width for each div */
+    margin: 10px; /* Adds margin around each div */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content vertically in flex column mode */
+    padding-right: 50px;
+}
+
+.first-details label, .second-details label, .third-details label, .fourth-details label {
+    display: inline-flex; /* Aligns the content (icon) in the center */
+    justify-content: center; /* Centers horizontally in the flex container */
+    align-items: center; /* Centers vertically in the flex container */
+    width: 50px; /* Specify a width */
+    height: 50px; /* Specify a height, equal to width to make a circle */
+    border-radius: 50%; /* Makes the element a circle */
+    border: 2px solid #FCFBF4; /* Example: 2px solid border, change color as needed */
+    background-color: #5E4B8B; /* Optional: background color */
+    color: #FCFBF4;
+}
+
+
+.section2 button {
+    border: 2px solid #5E4B8B; /* Neat border for the button */
+    background-color: transparent; /* Transparent background */
+    background-color: #5E4B8B; /* Button text color */
+    color: #FCFBF4 ;
+    padding: 5px 10px;
+    margin-top: 10px; /* Adds space above the button */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners for the button */
+    border: 2px solid #FCFBF4;
+}
+
+p {
+    margin-top: 10px; /* Adds space above the paragraph */
+}
+
+
+.sectionx {
+    background-color: #5E4B8B;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.sectionx span {
+    font-size: 31px;
+    color: white;
+    font-weight: 600;
+    border-bottom: 3px solid #fff; /* Thick, solid, white line */
+    padding-bottom: 2px; /* Adjusts spacing between text and underline */
+}
+
+
+.section3 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+    gap: 20px; /* Provides space between the items */
+    background-color: #FCFBF4;
+    margin-bottom: 30px;
+}
+
+.section3 .first-service-info,
+.section3 .second-service-info,
+.section3 .third-service-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content vertically */
+    text-align: center; /* Centers the text */
+    width: 100%; /* Full width on smaller screens */
+    max-width: 200px; /* Adjust based on your preference */
+}
+
+.section3 img {
+    width: 100px; /* Small square */
+    height: 100px; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area without losing aspect ratio */
+    margin-bottom: 10px; /* Space above the title */
+    border-radius: 5px;
+}
+
+.section3 h3 {
+    margin-top: 5px;
+    margin-bottom: 8px; /* Adequate margin between h3 and p */
+    color: #5E4B8B;
+}
+
+.section3 p {
+    color: #5E4B8B
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+    .section3 {
+        justify-content: space-around; /* Evenly space items on larger screens */
+    }
+    
+    .section3 .first-service-info,
+    .section3 .second-service-info,
+    .section3 .third-service-info {
+        width: auto; /* Auto width on larger screens */
+    }
+}
+
+.sectiony {
+    background-color: #FCFBF4;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.sectiony span {
+    font-size: 31px;
+    color: #5E4B8B;
+    font-weight: 600;
+    border-bottom: 3px solid #5E4B8B;; /* Thick, solid, white line */
+    padding-bottom: 2px; /* Adjusts spacing between text and underline */
+}
+
+
+.design-name {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+    gap: 20px; /* Provides space between the items */
+    background-color: #5E4B8B;
+    max-width: 400px;
+    flex-direction: column;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.footerx {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+    gap: 20px; /* Provides space between the items */
+    background-color: #5E4B8B;
+    max-width: 400px;
+    flex-direction: column;
+    margin-right: 50px;
+    color: pink;
+    font-size: 18px;
+}
+
+.nav-footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+    gap: 20px; /* Provides space between the items */
+    background-color: #5E4B8B;
+    max-width: 400px;
+    flex-direction: row;
+    margin-right: 50px;
+}
+
+.nav-footer p {
+    cursor: pointer;
+}
+
+.design-name p {
+    color: #FCFBF4;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.section4 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+    background-color: #5E4B8B;
+    flex-direction: row;
+    padding: 30px 5px 30px 5px;
+}
+
+.design-name .social-links a {
+    display: inline-flex; /* Aligns the content (icon) in the center */
+    justify-content: center; /* Centers horizontally in the flex container */
+    align-items: center; /* Centers vertically in the flex container */
+    width: 50px; /* Specify a width */
+    height: 50px; /* Specify a height, equal to width to make a circle */
+    border-radius: 50%; /* Makes the element a circle */
+    border: 2px solid pink; /* Example: 2px solid border, change color as needed */
+    background-color: #5E4B8B; /* Optional: background color */
+    color: pink;
+    text-decoration: none;
+    margin-left: 10px;
+}

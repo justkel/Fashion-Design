@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="explore.css">
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../Index/nav.css">
     <title>Explore</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -22,28 +23,29 @@
 <body>
   <nav class="nav">
     <div class="nav-logo">
-        <p class="logo_name"><i class="ri-scissors-line"></i> TAYLUR</p>
+      <p class="logo_name" onclick="navigateToRoot()">
+        <i class="ri-scissors-line"></i> TAYLUR
+    </p>
     </div>
     <div class="nav-menu" id="navMenu">
         <ul>
-            <li><a href="../Index/index.html" class="link active">Home</a></li>
-            <li><a href="#" class="link">Explore</a></li>
-            <li><a href="../Events/events.html" class="link">Events</a></li>
+          <li><a href="../Landing-Page/root.html#sectionx" class="link active">About</a></li>
+          <li><a href="../Landing-Page/root.html#section3" class="link">Services</a></li>
+          <li><a href="../Explore/explore.html" class="link">Explore</a></li>
         </ul>
     </div>
     <div class="nav-button">
-        <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
-        <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+        <button class="btn white-btn" id="loginBtn" onclick="login()">Login</button>
+        <button class="btn" id="registerBtn" onclick="signup()">Signup</button>
     </div>
     <div class="nav-menu-btn">
         <i class="bx bx-menu" onclick="myMenuFunction()"></i>
     </div>
-  </nav>
+</nav>
 
+    <div class="home-section-explore">
 
-    <div class="home-sectionx section">
-
-        <h2 class="collection-header section">Latest Collections</h2>
+        <h2 class="collection-header section"><i class="ri-star-fill"></i> Collections</h2>
         <div class="collection-grid section">
             <div class="collection-item">
                 <img src="../images/kid7.avif" alt="Collection 1">
@@ -107,6 +109,28 @@
 
     function viewMore(collection) {
         window.location.href = `more-image.html?collection=${collection}`;
+    }
+
+    function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+
+   function navigateToRoot() {
+    window.location.href = "../Landing-Page/root.html";
+  }
+
+  function login() {
+        window.location.href = "../Index/index.html";
+    }
+
+    function signup() {
+        window.location.href = "../Index/index.html";
     }
 
 </script>

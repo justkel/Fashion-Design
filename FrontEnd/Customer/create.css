@@ -51,16 +51,23 @@ textarea {
 .submit-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  height: 40px;
+  font-weight: 500;
+  background-color: #5E4B8B;
+  font-weight: 600;
+  color: antiquewhite;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #0056b3;
+  background-color: rgb(158, 102, 141)
 }
 
 #remove-btn {

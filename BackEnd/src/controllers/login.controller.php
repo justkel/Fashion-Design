@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     include '../config/db_config.php';
     
@@ -10,10 +11,9 @@
         $username = mysqli_real_escape_string($conn , $username);
         $password = mysqli_real_escape_string($conn , $password);
         if ($username == "" || $password == "") {
-            echo json_encode(array(
-                'isSuccess' => false, 
-                'message' => 'Enter complete details'));
+            echo "<script>alert('Enter Complete Details'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
         }
+       
         // Prepare a SQL statement to fetch user from the database
         $sql = "SELECT * FROM users WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
@@ -23,33 +23,24 @@
             if(password_verify($password, $row["password"])) {
                 
                 $_SESSION['username'] = $username;
-                echo json_encode(array(
-                    'isSuccess' => true, 
-                    'message' => 'Login successful'));
-                // header("Location: ../../../FrontEnd/dashboard.html");
+                echo "<script>alert('Enter Complete Details'); window.location.href = '../../../FrontEnd/Customer/customers.php';</script>";
+                
                 exit;
             }else {
                 // Authentication failed, redirect back to login page with error message
-                echo json_encode(array(
-                    'isSuccess' => false, 
-                    'message' => 'Invalid username or password'));
-                // header("Location: ../../../FrontEnd/login.html?error=invalid_credentials");
+                               
+                echo "<script>alert('Invalid username or password'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+
                 exit;
             }
         }else {
             // User does not exist, redirect back to login page with error message
-            echo json_encode(array(
-                'isSuccess' => false, 
-                'message' => 'User does not exist'));
-            // header("Location: ../../../FrontEnd/login.html?error=user_not_found");
-            exit;
+            echo "<script>alert('User not found); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+            
         }
     } else {
         // Redirect back to login page if accessed directly
-        echo json_encode(array(
-            'isSuccess' => false, 
-            'message' => 'Method not allowed'));
-        // header("Location: ../../../FrontEnd/login.html");
-        exit();
+        echo "<script>alert('Method not allowed'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+
     }
 ?>

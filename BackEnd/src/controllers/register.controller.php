@@ -8,57 +8,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Hash the password
-    if(empty($username) || empty($password)) {
-        echo json_encode(array(
-            'isSuccess' => false, 
-            'message' => 'Enter complete details'));
-
-            exit;
-    }
-    if($password !== $confirm_password) {
-        echo json_encode(array(
-            'isSuccess' => false, 
-            'message' => 'Passwords do not match'));
-        // header("Location: ../../../FrontEnd/register.html?error=password mismatch");
+    if(empty($username) || empty($email)|| empty($password)) {
+        echo "<script>alert('Enter complete details'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
         exit;
-    }else{
-        $sql = "SELECT * FROM users WHERE username = '$username'";
+    }
+    
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_array($result);
+        
+            // User already registered.
+            echo "<script>alert('User is already registered'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+            exit;
+    }else {
+        // Insert new user into the database
+        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email' , '$hashed_password')";
         $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_array($result);
-            
-                // User already registered.
-                echo json_encode(array(
-                    'isSuccess' => false, 
-                    'message' => 'User Already registered'));
-                // header("Location: ../../../FrontEnd/login.html?error=user_already_registered");
-                exit;
-        }else {
-            // Insert new user into the database
-            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email, '$hashed_password')";
-            $result = mysqli_query($conn, $sql);
-    
-            if ($result) {
-                // Registration successful, redirect to login page or homepage
-                echo json_encode(array(
-                    'isSuccess' => true, 
-                    'message' => 'Individual registered'));
-                // header("Location: ../../../FrontEnd/login.html?registration=success");
-                exit;
-            } else {
-                // Registration failed, redirect back to register page with error message
-                echo json_encode(array(
-                    'isSuccess' => false, 
-                    'message' => 'Error registering client'));
-                // header("Location: ../../../FrontEnd/register.html?error=error registering user");
-            }
-            }
+        if ($result) {
+            // Registration successful, redirect to login page or homepage
+            echo "<script>alert('User registered'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+            exit;
+        } else {
+            // Registration failed, redirect back to register page with error message
+            echo "<script>alert('Error registering user'); window.location.href = '../../../FrontEnd/Index/index.html';</script>";
+            // header("Location: ../../../FrontEnd/register.html?error=error registering user");
+        }
         }
     }
+    
 ?>

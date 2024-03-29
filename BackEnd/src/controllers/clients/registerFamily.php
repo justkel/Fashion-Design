@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 // Include the database configuration
 include '../../config/db_config.php';
 include '../../model/family.model.php';
@@ -9,58 +11,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data and update family model
     $family['familyname'] = $_POST["familyname"];
     $family['phonenumber'] = $_POST["phonenumber"];
+    $family['clientid'] = $_POST["clientid"];
 
-    // Get client details
-    $client['fullname'] = $_POST["fullname"];
-    $client['phonenumber'] = $_POST["phonenumber"];
-    $client['gender'] = $_POST["gender"];
-    $client['address'] = $_POST["address"];
+    // Check if the user is logged in
+    if(isset($_SESSION['username'])) {
+        $family['username'] = $_SESSION['username'];
+    }
 
     // Check if family name and phone number are provided
     if(empty($family['familyname']) || empty($family['phonenumber'])) {  
-        echo json_encode(array(
-            'isSuccess' => false, 
-            'message' => 'Please provide family name and phone number'));
-        exit;
+        echo "<script>alert('Enter Complete Details'); window.location.href = '../../../../FrontEnd/Customer/create-customer.php';</script>";
+        // return; // Exit the function
     }
    
-    $sql = "SELECT * FROM families WHERE familyname = '" . $family['familyname'] . "'";
+    $sql = "SELECT * FROM families WHERE familyname = '" . $family['familyname'] . "' AND username = '" . $_SESSION['username'] . "'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
         // Family already registered.
-        echo json_encode(array(
-            'isSuccess' => false,
-            'message' => 'Family Already registered'
-        ));
+        echo "<script>alert('Family already registered'); window.location.href = '../../../../FrontEnd/Customer/create-customer.php';</script>";
+        // return; // Exit the function
     }else{
         // Insert new family into the database
-        $sql = "INSERT INTO families (familyname, phonenumber) VALUES ('" . $family['familyname'] . "', '" . $family['phonenumber'] . "')";
+        $sql = "INSERT INTO families (familyname, phonenumber, num_clients, username) VALUES ('" . $family['familyname'] . "', '" . $family['phonenumber'] . "', '" . $family['num_clients'] . "', '". $family['username']."')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            // $family_id = mysqli_insert_id($conn); // Get the inserted family ID
+            $family_id = mysqli_insert_id($conn); // Get the inserted family ID
     
             // If clients are to be added to the family
-            // if (!empty($_POST["clients"]) && is_array($_POST["clients"])) {
-            //     foreach ($_POST["clients"] as $client_id) {
-            //         // Update client records with the family ID
-            //         $update_sql = "UPDATE clients SET family_id = $family_id WHERE client_id = $client_id";
-            //         $update_result = mysqli_query($conn, $update_sql);
-            //         // Handle any errors if needed
-            //     }
-            // }
+            if (!empty($_POST["clientid"]) && is_array($_POST["clientid"])) {
+                foreach ($_POST["clientid"] as $clientid) {
+                    // Update client records with the family ID
+                    $update_sql = "UPDATE clients SET family_id = $family_id WHERE clientid = $clientid";
+                    $update_result = mysqli_query($conn, $update_sql);
+                    // Handle any errors if needed
+                }
+            }
             // Registration successful
-            echo (string)$client['fullname'];
-            echo json_encode(array(
-                'isSuccess' => true, 
-                'message' => 'Family registered successfully'));
-            exit;
+            echo "<script>alert('Family Registered successfully'); window.location.href = '../../../../FrontEnd/Customer/customers.php';</script>";
         } else {
-            // Registration failed
-            echo json_encode(array(
-                'isSuccess' => false, 
-                'message' => 'Error registering family'));
-            exit;
+            echo "<script>alert('Error registering FAMILY'); window.location.href = '../../../../FrontEnd/Customer/create-customer.php';</script>";
         }
     }
 }

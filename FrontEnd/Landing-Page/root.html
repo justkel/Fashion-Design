@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="root.css" />
+    <title>TAYLUR</title>
+    
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-logo">
+        <p style="cursor: pointer;" class="logo_name" onclick="navigateToRoot()">
+            <i class="ri-scissors-line"></i> TAYLUR
+        </p>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="root.html#sectionx" class="link active">About</a></li>
+          <li><a href="root.html#section3" class="link">Services</a></li>
+          <li><a href="../Explore/explore.html" class="link">Explore</a></li>
+        </ul>
+      </div>
+      <div class="nav-button">
+        <button class="btn white-btn" id="loginBtn" onclick="login()">Login</button>
+        <button class="btn" id="registerBtn" onclick="signup()">Signup</button>
+      </div>
+      <div class="nav-menu-btn">
+        <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+      </div>
+    </nav>
+
+    <section class="section1">
+        <div class="intro-div">
+            <h2>Welcome to Taylur</h2>
+
+            <p class="first-p">Your Digital Tailoring <br>Companion</p>
+
+            <p class="second-p">Effortlessly store the measurements <br> of your customers and their family <br> members in just seconds</p>
+
+            <span onclick="signup()" class="first-span">Start Measuring</span>
+            <span onclick="signup()" class="second-span">Track Projects</span>
+        </div>
+        <div class="image-div">
+            <img src="../images/sew-machine.jpg" alt="sewing-machine">
+        </div>
+    </section>
+
+    <section class="sectionx" id="sectionx">
+        <span>How it works</span>
+    </section>
+
+    <section class="section2">
+        
+        
+            <div class="first-details">
+                <label for=""><i class="ri-login-box-line"></i></label>
+                <h3>Login/Signup</h3>
+                <button>Step 1</button>
+                <p>Access services with your account.</p>
+            </div>
+            <div class="second-details">
+                <label for=""><i class="ri-user-3-fill"></i></label>
+                <h3>Registration</h3>
+                <button>Step 2</button>
+                <p>Register individual and family accounts.</p>
+            </div>
+            <div class="third-details">
+                <label for=""><i class="ri-scissors-2-line"></i></label>
+                <h3>Measurements</h3>
+                <button>Step 3</button>
+                <p>Easily save customer measurements.</p>
+            </div>
+            <div class="fourth-details">
+                <label for=""><i class="ri-checkbox-circle-fill"></i></label>
+                <h3>24/7 Access</h3>
+                <button>Step 4</button>
+                <p>Use our services anytime, anywhere.</p>
+            </div>
+            
+
+    </section>
+
+    <section class="sectiony">
+        <span>Services</span>
+    </section>
+
+    <section class="section3" id="section3">
+        <div class="first-service-info">
+            <img src="../images/measurex.jpg" alt="">
+            <h3>Measurements</h3>
+            <p>Streamline measurement storage and retrieval.</p>
+        </div>
+        <div class="second-service-info">
+            <img src="../images/appointy.jpg" alt="">
+            <h3>Appointments</h3>
+            <p>Manage deadlines efficiently.</p>
+        </div>
+        <div class="third-service-info">
+            <img src="../images/project.jpg" alt="">
+            <h3>Projects</h3>
+            <p>Oversee daily tasks with ease.</p>
+        </div>
+        
+    </section>
+
+    <section class="section4">
+        <div class="design-name">
+            <p class="logo_name"><i class="ri-scissors-line"></i> TAYLUR</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footerx">
+            <div class="nav-footer">
+                <p onclick="about()">About</p>
+                <p onclick="services()">Services</p>
+                <p onclick="explore()">Explore</p>
+            </div>
+
+            <p>Taylur &copy; 2024</p>
+        </div>
+    </section>
+  </body>
+
+  <script>
+    function myMenuFunction() {
+      var i = document.getElementById("navMenu");
+
+      if (i.className === "nav-menu") {
+        i.className += " responsive";
+      } else {
+        i.className = "nav-menu";
+      }
+    }
+
+    function navigateToRoot() {
+        window.location.href = "../Landing-Page/root.html";
+    }
+
+    function login() {
+        window.location.href = "../Index/index.html";
+    }
+
+    function signup() {
+        window.location.href = "../Index/index.html";
+    }
+
+    function about() {
+        window.location.href = "root.html#sectionx";
+    }
+
+    function services() {
+        window.location.href = "root.html#section3";
+    } 
+
+    function explore () {
+        window.location.href = "../Explore/explore.html";
+    }
+  </script>
+</html>

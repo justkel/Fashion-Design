@@ -1,0 +1,15 @@
+/* Button style */
+.logout-button {
+    background-color: #6c5ce7; /* Purple background color */
+    border: none;
+    color: white; /* Text color */
+    margin-right: 10px;
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+.logout-button:hover {
+    background-color: #8c7ae6; /* Darker purple on hover */
+}

@@ -8,21 +8,23 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-    <link rel="stylesheet" href="../Customer/create.css">
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="loginSignup.css">
     <title>Login & Registration</title>
 </head>
 <body>
  <div class="wrapper">
+
     <nav class="nav">
         <div class="nav-logo">
-            <p class="logo_name"><i class="ri-scissors-line"></i> TAYLUR</p>
+            <p style="cursor: pointer;" class="logo_name" onclick="navigateToRoot()">
+                <i class="ri-scissors-line"></i> TAYLUR
+            </p>
         </div>
         <div class="nav-menu" id="navMenu">
             <ul>
-                <li><a href="#" class="link active">Home</a></li>
+                <li><a href="../Landing-Page/root.html#sectionx" class="link active">About</a></li>
+                <li><a href="../Landing-Page/root.html#section3" class="link">Services</a></li>
                 <li><a href="../Explore/explore.html" class="link">Explore</a></li>
-                <li><a href="../Events/events.html" class="link">Events</a></li>
             </ul>
         </div>
         <div class="nav-button">
@@ -38,71 +40,56 @@
     <div class="form-box">
         
         <!------------------- login form -------------------------->
-
         <form action="../../BackEnd/src/controllers/login.controller.php" method="post">
-            <div class="login-container" id="login">
-                <div class="top">
-                    <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
-                    <header>Login</header>
-                </div>
+           <div class="login-container" id="login">
+            <div class="top">
+                <span>Your Digital Tailoring Companion </span>
+                <header>Don't have an account? <a href="#" onclick="register()">Sign Up</a></header>
+                
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Username" name="username" required>
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="password" placeholder="Password" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign In">
+            </div>
+        </div> 
+        </form>
+
+        
+
+        <!------------------- registration form -------------------------->
+        <form action="../../BackEnd/src/controllers/register.controller.php" method="post">
+           <div class="register-container" id="register">
+            <div class="top">
+                <header>Have an account? <a href="#" onclick="login()">Login</a></header>
+                
+            </div>
+            <div class="two-forms">
                 <div class="input-box">
                     <input type="text" class="input-field" placeholder="Username" name="username">
                     <i class="bx bx-user"></i>
                 </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password" name="password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <button type="submit" class="submit" value="">Sign In</button>
-                </div>
-                <div class="two-col">
-                    <div class="one">
-                        <input type="checkbox" id="login-check">
-                        <label for="login-check"> Remember Me</label>
-                    </div>
-                    <div class="two">
-                        <label><a href="#">Forgot password?</a></label>
-                    </div>
-                </div>
             </div>
-        </form>
-
-        <!------------------- registration form -------------------------->
-        <form action="../../BackEnd/src/controllers/register.controller.php" method="post">
-            <div class="register-container" id="register">
-                <div class="top">
-                    <span>Have an account? <a href="#" onclick="login()">Login</a></span>
-                    <header>Sign Up</header>
-                </div>
-                <div class="two-forms">
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Username" name="username">
-                        <i class="bx bx-user"></i>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Email" name="email">
-                    <i class="bx bx-envelope"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password" name="password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <input type="submit" class="submit" value="Register">
-                </div>
-                <div class="two-col">
-                    <div class="one">
-                        <input type="checkbox" id="register-check">
-                        <label for="register-check"> Remember Me</label>
-                    </div>
-                    <div class="two">
-                        <label><a href="#">Terms & conditions</a></label>
-                    </div>
-                </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Email" name="email" required>
+                <i class="bx bx-envelope"></i>
             </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password" name="password" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Register">
+            </div>
+        </div> 
         </form>
+        
     </div>
 </div>   
 
@@ -144,6 +131,10 @@
         b.className += " white-btn";
         x.style.opacity = 0;
         y.style.opacity = 1;
+    }
+
+    function navigateToRoot() {
+        window.location.href = "../Landing-Page/root.html";
     }
 
 </script>
