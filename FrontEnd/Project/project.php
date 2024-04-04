@@ -28,7 +28,7 @@ if(!isset($_SESSION['username'])) {
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
   />
-  <link rel="stylesheet" href="create.css" />
+  <link rel="stylesheet" href="../Customer/create.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="../logout.css">
 <title>Taylur|Projects</title>
@@ -149,20 +149,21 @@ if(!isset($_SESSION['username'])) {
     </div>
 
 
-<div id="board">
-  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div class="column-header">To Do</div>
-    <button class="add-btn" onclick="addTask(event, 'To Do')" style="background-color: #E7A9BE;">+ Add a task</button>
-  </div>
-  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div class="column-header">Doing</div>
-    <!-- <button onclick="addTask(event, 'Doing')">+ Add a task</button> -->
-  </div>
-  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div class="column-header">Done</div>
-    <!-- <button onclick="addTask(event, 'Done')">+ Add a task</button> -->
-  </div>
-</div>
+    <div id="board">
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="column-header">To Do</div>
+        <button class="add-btn" onclick="addTask(event, 'To Do')" style="background-color: #E7A9BE;">+ Add a task</button>
+      </div>
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="column-header">Doing</div>
+        <!-- <button onclick="addTask(event, 'Doing')">+ Add a task</button> -->
+      </div>
+      <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="column-header">Done</div>
+        <!-- <button onclick="addTask(event, 'Done')">+ Add a task</button> -->
+      </div>
+    </div>
+  </section>    
 
 <script>
 let idCounter = 0;

@@ -35,8 +35,8 @@
         </ul>
     </div>
     <div class="nav-button">
-        <button class="btn white-btn" id="loginBtn" onclick="">Login</button>
-        <button class="btn" id="registerBtn" onclick="">Signup</button>
+        <button class="btn white-btn" id="loginBtn" onclick="login()">Login</button>
+        <button class="btn" id="registerBtn" onclick="signup()">Signup</button>
     </div>
     <div class="nav-menu-btn">
         <i class="bx bx-menu" onclick="myMenuFunction()"></i>
@@ -63,8 +63,8 @@
     const collection = urlParams.get('collection');
 
     const images = {
-        'Collection 1': ['kid7.avif', 'kid2.avif', 'kid4.avif', 'kid5.avif', 'kid1.avif'],
-        'Collection 2': ['kurta1.avif', 'kurta2.avif', 'kurta3.avif', 'kurta4.avif'],
+        'Collection 1': ['kid7.avif', 'kid2.avif', 'kid4.avif', 'kid5.avif', 'kid1.avif', 'kid8.avif', 'kid9.avif', 'kid10.avif', 'kid11.avif', 'kid12.avif', 'kid13.avif', 'kid14.avif', 'kid15.avif', 'kid16.avif'],
+        'Collection 2': ['kurta1.avif', 'kurta2.avif', 'kurta3.avif', 'kurta4.avif', 'kurta5.avif', 'kurta6.avif', 'kurta7.avif', 'kurta8.avif', 'kurta9.avif', 'kurta10.avif', 'kurta11.avif', 'kurta12.avif'],
         'Collection 3': ['sari1.avif', 'sari2.avif', 'sari3.avif', 'sari4.avif'],
         'Collection 4': ['set1.avif', 'set2.avif', 'set3.avif', 'set4.avif', 'set5.avif'],
         'Collection 5': ['shirtx.avif', 'shirt2.avif', 'shirt4.avif', 'shirt1.avif'],
@@ -91,6 +91,14 @@
 
     function navigateToRoot() {
       window.location.href = "../Landing-Page/root.html";
+    }
+
+    function login() {
+        window.location.href = "../Index/index.html";
+    }
+
+    function signup() {
+        window.location.href = "../Index/index.html";
     }
 </script>
 

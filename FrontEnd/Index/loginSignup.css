@@ -9,6 +9,15 @@ body{
     background-color: #fff;
     overflow: hidden;
 }
+
+/* body{
+    background: url("../Images/alexi-r.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+} */
+
 .wrapper{
     display: flex;
     justify-content: center;

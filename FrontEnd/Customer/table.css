@@ -1,6 +1,7 @@
 /* Table style */
 .table {
     width: 90%; /* Adjust width as needed */
+    min-width: 600px; /* Adjust based on your table's minimum width */
     margin: 20px auto; /* Add margin to center the table */
     background-color: #f2e6ff; /* Light purple background */
     border-collapse: collapse;
@@ -43,4 +44,20 @@
     font-weight: bold; /* Bold font */
     text-align: center; /* Center alignment */
     margin-top: 20px; /* Add margin to separate from other elements */
+    margin-bottom: 20px;
 }
+
+.table-responsive {
+    overflow-x: scroll; /* Always shows horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    margin: 0 20px; /* Adjust the margin as needed */
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        margin: 0 10px; /* Smaller margins on smaller screens */
+    }
+}
+
+
+

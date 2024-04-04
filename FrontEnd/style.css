@@ -248,6 +248,14 @@
   margin: 0 15px;
   cursor: pointer;
 }
+
+@media (max-width: 500px) {
+  .home-section .home-content .text {
+    display: none;
+  }
+
+}
+
 .home-section .home-content .text{
   font-size: 23px;
   font-weight: 600;
@@ -360,6 +368,8 @@ h1 {
   #addNewButton, #addNewButton2 {
     display: block;
     margin: 10px auto;
+    padding: 10px 5px 10px 5px;
+    height: 50px;
   }
 }
 
@@ -405,6 +415,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 0;
   }
 
   #individualButton, #familyButton {
