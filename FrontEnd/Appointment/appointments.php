@@ -99,6 +99,12 @@ if(!isset($_SESSION['username'])) {
         background-color: #5e4b8b;
         color: white;
       }
+
+      #calendar-body {
+        overflow-x: scroll; /* Always shows horizontal scrollbar */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+        margin: 0 20px; /* Adjust the margin as needed */
+      }
     </style>
   </head>
   <body>
@@ -207,80 +213,202 @@ if(!isset($_SESSION['username'])) {
     const monthAndYear = document.getElementById("monthAndYear");
     const calendarBody = document.getElementById("calendar-body");
 
+    // function renderCalendar(year, month) {
+    //   calendarBody.innerHTML = ""; // Clear existing calendar entries
+    //   const monthNames = [
+    //     "January",
+    //     "February",
+    //     "March",
+    //     "April",
+    //     "May",
+    //     "June",
+    //     "July",
+    //     "August",
+    //     "September",
+    //     "October",
+    //     "November",
+    //     "December",
+    //   ];
+
+    //   const firstDay = new Date(year, month).getDay();
+    //   const daysInMonth = 32 - new Date(year, month, 32).getDate();
+
+    //   let date = 1;
+    //   for (let i = 0; i < 6; i++) {
+    //     let row = document.createElement("tr");
+
+    //     for (let j = 0; j < 7; j++) {
+    //       let cell = document.createElement("td");
+    //       if (i === 0 && j < firstDay) {
+    //         cell.classList.add("empty");
+    //       } else if (date > daysInMonth) {
+    //         cell.classList.add("empty"); // Continue filling row with empty cells if needed
+    //       } else {
+    //         cell.textContent = date;
+    //         cell.setAttribute('data-date', `${year}-${month + 1}-${date}`); // Ensure dates are properly formatted (YYYY-MM-DD)
+
+    //         if (
+    //           date === today.getDate() &&
+    //           year === today.getFullYear() &&
+    //           month === today.getMonth()
+    //         ) {
+    //           cell.classList.add("today");
+    //         }
+
+    //         cell.onclick = function () {
+    //           addAppointment(this);
+    //         };
+
+    //         date++;
+    //       }
+    //       row.appendChild(cell);
+    //     }
+    //     calendarBody.appendChild(row);
+    //   }
+
+    //   monthAndYear.textContent = `${monthNames[month]} ${year}`;
+
+    //   // Fetch and display appointments after rendering the calendar
+    //   fetchAppointmentsAndRender(year, month);
+    // }
+
     function renderCalendar(year, month) {
-      calendarBody.innerHTML = "";
-      const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
+    calendarBody.innerHTML = ""; // Clear existing calendar entries
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
-      const firstDay = new Date(year, month).getDay();
-      const daysInMonth = 32 - new Date(year, month, 32).getDate();
+    const firstDay = new Date(year, month).getDay();
+    const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-      let date = 1;
-      for (let i = 0; i < 6; i++) {
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
         let row = document.createElement("tr");
 
         for (let j = 0; j < 7; j++) {
-          if (i === 0 && j < firstDay) {
             let cell = document.createElement("td");
-            cell.classList.add("empty");
-            row.appendChild(cell);
-          } else if (date > daysInMonth) {
-            break;
-          } else {
-            let cell = document.createElement("td");
-            cell.textContent = date;
-            if (
-              date === today.getDate() &&
-              year === today.getFullYear() &&
-              month === today.getMonth()
-            ) {
-              cell.classList.add("today");
+            if (i === 0 && j < firstDay) {
+                cell.classList.add("empty");
+            } else if (date > daysInMonth) {
+                cell.classList.add("empty"); // Continue filling row with empty cells if needed
+            } else {
+                cell.innerHTML = `<div class="date-number">${date}</div><div class="appointment-details"></div>`;
+                cell.setAttribute('data-date', `${year}-${(month + 1).toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`); // Ensure dates are properly formatted (YYYY-MM-DD)
+
+                if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+                    cell.classList.add("today");
+                }
+
+                cell.onclick = function() {
+                    addAppointment(this);
+                };
+
+                date++;
             }
-            cell.onclick = function () {
-              addAppointment(this);
-            };
             row.appendChild(cell);
-            date++;
-          }
         }
-
         calendarBody.appendChild(row);
-      }
-
-      monthAndYear.textContent = `${monthNames[month]} ${year}`;
     }
 
-    function addAppointment(td) {
-      let appointment = prompt(
-        "Add appointment details for " +
-          td.textContent +
-          " " +
-          monthAndYear.textContent +
-          ":",
-        ""
-      );
-      
-      // Limit the appointment text to 100 characters
-      if (appointment && appointment.length > 30) {
-        appointment = appointment.substring(0, 15) + '...'; // Truncate and add ellipsis
-      }
-      
+    monthAndYear.textContent = `${monthNames[month]} ${year}`;
+
+    // Fetch and display appointments after rendering the calendar
+    fetchAppointmentsAndRender(year, month);
+}
+
+
+
+    // function addAppointment(td) {
+    //   let date = td.textContent;
+    //   let yearMonth = monthAndYear.textContent;
+    //   let appointmentDate = new Date(`${yearMonth} ${date}`);
+
+    //   let appointment = prompt("Add appointment details for " + date + " " + yearMonth + ":", "");
+    //   if (appointment) {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("POST", "../../BackEnd/src/controllers/appointmentController.php", true);
+    //     xhr.setRequestHeader("Content-Type", "application/json"); // Set the content type to JSON
+        
+    //     // Define what happens on successful data submission
+    //     xhr.onload = function () {
+    //         if (xhr.status == 200) {
+    //             var data = JSON.parse(xhr.responseText);
+    //             if(data.success) {
+    //                 // Update the cell only on successful save
+    //                 td.innerHTML = `${date}<div>${appointment}</div>`;
+    //             } else {
+    //                 alert('Failed to save appointment.');
+    //             }
+    //         } else {
+    //             // Handle non-200 status
+    //             console.error("Server returned status:", xhr.status);
+    //             alert('Failed to save appointment. Please try again.');
+    //         }
+    //     };
+        
+    //     // Define what happens in case of an error
+    //     xhr.onerror = function () {
+    //         console.error("Request failed");
+    //         alert('Error making the request.');
+    //     };
+        
+    //     // Set up and send the request
+    //     xhr.send(JSON.stringify({ date: appointmentDate.toISOString().split('T')[0], details: appointment }));
+    //  }
+
+    // }
+
+    function addAppointment(cell) {
+      let dateString = cell.getAttribute('data-date'); // Use the data-date attribute
+      let appointmentDate = new Date(dateString);
+
+      let promptMessage = `Add appointment details for ${appointmentDate.toLocaleDateString()}:`;
+      let appointment = prompt(promptMessage, "");
+
       if (appointment) {
-        td.innerHTML = `${td.textContent}<div>${appointment}</div>`;
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "../../BackEnd/src/controllers/appointmentController.php", true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+
+          xhr.onload = function () {
+              if (xhr.status == 200) {
+                  var data = JSON.parse(xhr.responseText);
+                  if(data.success) {
+                      // Consider fetching and re-rendering the appointments to reflect the new addition
+                      fetchAppointmentsAndRender(appointmentDate.getFullYear(), appointmentDate.getMonth());
+                  } else {
+                      alert('Failed to save appointment.');
+                  }
+              } else {
+                  console.error("Server returned status:", xhr.status);
+                  alert('Failed to save appointment. Please try again.');
+              }
+          };
+
+          xhr.onerror = function () {
+              console.error("Request failed");
+              alert('Error making the request.');
+          };
+
+          // Set up and send the request with the correct date format
+          xhr.send(JSON.stringify({ 
+              date: dateString, // Use dateString directly since it's already in the correct format
+              details: appointment 
+          }));
+
+          // Limit the appointment text to 100 characters
+          if (appointment && appointment.length > 30) {
+            appointment = appointment.substring(0, 15) + '...'; // Truncate and add ellipsis
+          }
+          
+          if (appointment) {
+            cell.innerHTML = `${cell.textContent}<div>${appointment}</div>`;
+          }
       }
-    }
+   }
+
+
 
 
     function moveMonth(step) {
@@ -300,5 +428,98 @@ if(!isset($_SESSION['username'])) {
     function navigateToRoot() {
         window.location.href = "../Landing-Page/root.html";
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      renderCalendar(currentYear, currentMonth);
+      fetchAppointmentsAndRender(currentYear, currentMonth);
+    });
+
+    // function fetchAppointmentsAndRender(year, month) {
+
+    //   var xhr = new XMLHttpRequest();
+    //   xhr.open("GET", "../../BackEnd/src/controllers/appointmentController.php", true);
+
+    //   xhr.onload = function() {
+    //       if (this.status == 200) {
+    //           console.log("Server Response:", this.responseText);
+    //           try {
+    //               var appointments = JSON.parse(this.responseText);
+
+    //               // Check if appointments is an array and not empty
+    //               if (Array.isArray(appointments) && appointments.length > 0) {
+    //                   appointments.forEach(function(appointment) {
+    //                       let appointmentDate = new Date(appointment.appointment_date);
+    //                       if (appointmentDate.getFullYear() === year && appointmentDate.getMonth() === month) {
+    //                           let formattedDate = `${appointmentDate.getFullYear()}-${appointmentDate.getMonth() + 1}-${appointmentDate.getDate()}`;
+    //                           let cell = document.querySelector(`#calendar-body td[data-date="${formattedDate}"]`);
+    //                           if (cell) {
+    //                               let details = appointment.details.length > 30 ? appointment.details.substring(0, 27) + '...' : appointment.details;
+    //                               cell.innerHTML += `<div>${details}</div>`; // Append the appointment details to the cell
+    //                           }
+    //                       }
+    //                   });
+    //               } else {
+    //                   // Handle cases where no appointments are found or the response is not an array
+    //                   console.log("No appointments found or the response is not an array");
+    //                   // Optional: Update the UI to reflect that no appointments are available
+    //               }
+    //           } catch (e) {
+    //               console.error('Error parsing appointments:', e);
+    //           }
+    //       } else {
+    //           console.error("Server returned status:", this.status);
+    //       }
+    //   };
+
+
+    //   xhr.onerror = function() {
+    //       console.error("Error fetching appointments. Network issue.");
+    //   };
+
+    //   xhr.send();
+    // }   
+    
+    function fetchAppointmentsAndRender(year, month) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../../BackEnd/src/controllers/appointmentController.php", true);
+
+    xhr.onload = function() {
+        if (this.status == 200) {
+            try {
+                var appointments = JSON.parse(this.responseText);
+
+                // Clear previous appointment details
+                document.querySelectorAll('.appointment-details').forEach(function(detailContainer) {
+                    detailContainer.innerHTML = '';
+                });
+
+                // Add new appointment details
+                appointments.forEach(function(appointment) {
+                    let appointmentDate = new Date(appointment.appointment_date);
+                    if (appointmentDate.getFullYear() === year && appointmentDate.getMonth() === month) {
+                        let formattedDate = `${appointmentDate.getFullYear()}-${(appointmentDate.getMonth() + 1).toString().padStart(2, '0')}-${appointmentDate.getDate().toString().padStart(2, '0')}`;
+                        let cell = document.querySelector(`#calendar-body td[data-date="${formattedDate}"] .appointment-details`);
+                        if (cell) {
+                            let details = appointment.details.length > 30 ? appointment.details.substring(0, 27) + '...' : appointment.details;
+                            cell.innerHTML += `<div>${details}</div>`;
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error parsing appointments:', e);
+            }
+        } else {
+            console.error("Server returned status:", this.status);
+        }
+    };
+
+    xhr.onerror = function() {
+        console.error("Error fetching appointments. Network issue.");
+    };
+
+    xhr.send();
+}
+
+
   </script>
 </html>
